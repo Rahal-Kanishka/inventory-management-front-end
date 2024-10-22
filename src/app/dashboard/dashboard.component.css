@@ -1,0 +1,8 @@
+.menu-box {
+  border: 2px black solid;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 15vh;
+  align-content: center;
+}
