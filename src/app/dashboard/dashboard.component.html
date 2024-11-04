@@ -26,3 +26,15 @@
     </div>
   </div>
 </div>
+
+<div class="row pt-5">
+  <div class="grid-box">
+    <ag-grid-angular
+      style="width: 85%; height: 40vh;"
+      class="ag-theme-quartz"
+      [rowData]="rowData"
+      [gridOptions] = "gridOptions"
+      [columnDefs]="columnDefs">
+    </ag-grid-angular>
+  </div>
+</div>
