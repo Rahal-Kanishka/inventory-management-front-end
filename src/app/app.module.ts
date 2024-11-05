@@ -9,12 +9,15 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { RouterLink, RouterModule, RouterOutlet, Routes } from "@angular/router";
 import { IngredientListComponent } from "./ingredient-list/ingredient-list.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
+import { OrderListComponent } from "./order-list/order-list.component";
+import { HttpClientModule } from "@angular/common/http";
 
 const routes: Routes = [
 
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }, // Default route
   { path: 'dashboard', component: DashboardComponent },
   { path: 'ingredient-list', component: IngredientListComponent },
+  { path: 'order-list', component: OrderListComponent },
   { path: '**', component: NotFoundComponent },
 
 
@@ -30,6 +33,7 @@ const routes: Routes = [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ToastrModule.forRoot(),
     AgGridModule
   ],
