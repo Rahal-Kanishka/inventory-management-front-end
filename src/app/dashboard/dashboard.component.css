@@ -13,11 +13,11 @@
 }
 
 /* we set border radius for header row  */
-::ng-deep  .ag-header {
+::ng-deep .ag-header {
   border-radius: 10px;
 }
 
-::ng-deep  .ag-row {
+::ng-deep .ag-row {
   border-radius: 10px;
 }
 
@@ -28,4 +28,20 @@
 
 ::ng-deep .ag-header-cell {
   background: lightgray;
+}
+
+.menu-items-list {
+  div {
+    padding-bottom: 15%;
+    padding-left: 5px;
+    border-radius: 5px;
+    font-size: x-large;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  div:hover {
+    background: #cbcdd0;
+  }
 }
