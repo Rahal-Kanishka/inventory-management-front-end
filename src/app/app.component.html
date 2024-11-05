@@ -1,4 +1,26 @@
 <h1 class="text-center">Inventory Management System </h1>
 <h1 class="text-center">Days for final submission: {{result}}</h1>
 
-<router-outlet></router-outlet>
+
+<div class="row">
+  <div class="row col-2">
+    <div class="menu-items-list">
+      <div class="menu-item" [routerLink]="'/'">Dashboard</div>
+      <div class="menu-item" [routerLink]="'/ingredient-list'">Ingredients</div>
+      <div class="menu-item" [routerLink]="'/recipe-list'">Recipes</div>
+      <div class="menu-item" [routerLink]="'/batch-list'">Batches</div>
+      <div class="menu-item" [routerLink]="'/order-list'">Orders</div>
+      <div class="menu-item" [routerLink]="'/user-list'">Users</div>
+      <div class="menu-item" [routerLink]="'/location-list'">Locations</div>
+      <div class="menu-item">Sign Out</div>
+
+    </div>
+  </div>
+  <div class="row col-10">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,15 @@
+.menu-items-list {
+  div {
+    padding-bottom: 15%;
+    padding-left: 10px;
+    border-radius: 5px;
+    font-size: x-large;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  div:hover {
+    background: #cbcdd0;
+  }
+}
