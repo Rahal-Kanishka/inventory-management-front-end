@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
 import {AgGridAngular} from "ag-grid-angular";
 import {ColDef, GridOptions} from "ag-grid-community";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
-  imports: [
-    AgGridAngular
-  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -46,10 +43,11 @@ export class DashboardComponent {
   }
   }
 
-  constructor() {
+  constructor(private toastr: ToastrService) {
     this.columnDefs.forEach((column) => {
       column.resizable = true;
     })
+    this.toastr.success('Inventory management System', 'Welcome');
   }
 
 }
