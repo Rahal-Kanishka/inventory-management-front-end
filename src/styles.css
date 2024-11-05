@@ -1,2 +1,14 @@
 @import "ag-grid-community/styles/ag-grid.css";
 @import "ag-grid-community/styles/ag-theme-balham.css";
+@import 'ngx-toastr/toastr';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Body styles */
+body {
+  max-width: 100%;
+  font-family: "Staatliches", sans-serif;
+}
