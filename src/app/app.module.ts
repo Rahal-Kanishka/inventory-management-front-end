@@ -11,6 +11,7 @@ import { IngredientListComponent } from "./ingredient-list/ingredient-list.compo
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { OrderListComponent } from "./order-list/order-list.component";
 import { HttpClientModule } from "@angular/common/http";
+import { GridComponent } from "./common/grid/grid.component";
 
 const routes: Routes = [
 
@@ -26,7 +27,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    GridComponent,
+    IngredientListComponent,
+    NotFoundComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
