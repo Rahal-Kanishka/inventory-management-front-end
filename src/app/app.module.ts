@@ -12,6 +12,7 @@ import { NotFoundComponent } from "./not-found/not-found.component";
 import { OrderListComponent } from "./order-list/order-list.component";
 import { HttpClientModule } from "@angular/common/http";
 import { GridComponent } from "./common/grid/grid.component";
+import { ReactiveFormsModule } from "@angular/forms";
 
 const routes: Routes = [
 
@@ -39,7 +40,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    AgGridModule
+    AgGridModule,
+    ReactiveFormsModule
   ],
   bootstrap: [
     AppComponent
