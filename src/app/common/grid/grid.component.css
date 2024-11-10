@@ -1,0 +1,23 @@
+
+::ng-deep .ag-theme-quartz {
+  --ag-borders: none;
+  /*--ag-row-border-style: none;*/
+}
+
+/* we set border radius for header row  */
+::ng-deep .ag-header {
+  border-radius: 10px;
+}
+
+::ng-deep .ag-row {
+  border-radius: 10px;
+}
+
+.grid-box {
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep .ag-header-cell {
+  background: lightgray;
+}
