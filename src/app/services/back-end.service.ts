@@ -41,10 +41,10 @@ export class BackEndService {
 
       return new Observable((subscriber) => {
         this.http.post<any>(API_URL + postPath, saveData, httpOptions).subscribe(
-          () => {
-            return subscriber.next(true)
+          (response) => {
+            return subscriber.next(response)
           }, error => {
-            return subscriber.next(false)
+            return subscriber.next(error)
           }
         );
       });
