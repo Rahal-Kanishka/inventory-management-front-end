@@ -33,14 +33,7 @@ export class DashboardComponent {
     rowHeight: 45,
     autoSizeStrategy: {
       type: 'fitGridWidth'
-    },
-    getRowStyle: params => {
-      if (params && params.node.rowIndex && params.node.rowIndex % 2 === 1) {
-        return { background: 'gray' };
-      } else {
-        return { background: 'white' };
-      }
-  }
+    }
   }
 
   constructor(private toastr: ToastrService) {
