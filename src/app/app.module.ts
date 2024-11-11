@@ -13,6 +13,9 @@ import { OrderListComponent } from "./order-list/order-list.component";
 import { HttpClientModule } from "@angular/common/http";
 import { GridComponent } from "./common/grid/grid.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { EditCellComponent } from './common/edit-cell/edit-cell.component';
+import { IngredientAddComponent } from "./ingredient-add/ingredient-add.component";
+import { IngredientEditComponent } from "./ingredient-edit/ingredient-edit.component";
 
 const routes: Routes = [
 
@@ -31,7 +34,9 @@ const routes: Routes = [
     DashboardComponent,
     GridComponent,
     IngredientListComponent,
-    NotFoundComponent
+    IngredientAddComponent,
+    NotFoundComponent,
+    EditCellComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -41,7 +46,8 @@ const routes: Routes = [
     HttpClientModule,
     ToastrModule.forRoot(),
     AgGridModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IngredientEditComponent
   ],
   bootstrap: [
     AppComponent
