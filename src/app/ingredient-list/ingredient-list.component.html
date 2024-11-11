@@ -4,32 +4,6 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <form [formGroup]="ingredientForm" (ngSubmit)="saveIngredientData()">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Create Ingredient</h5>
-        </div>
-        <div class="modal-body">
-
-          <div class="form-group">
-            <label for="emailInput">Name</label>
-            <input type="email" class="form-control" id="emailInput" placeholder="name" formControlName="name">
-          </div>
-          <div class="form-group">
-            <label for="descInput">Description</label>
-            <input type="email" class="form-control" id="descInput" placeholder="description" formControlName="description">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+<app-ingredient-add #ingredientAddComponent  (modalClosed)="onModalClosed($event)"></app-ingredient-add>
 
 <app-grid [gridData]="ingredientList" [columnDefs]="columnDefs"></app-grid>
