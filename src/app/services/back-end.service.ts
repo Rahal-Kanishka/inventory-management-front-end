@@ -24,11 +24,11 @@ export class BackEndService {
     }
 
 
-    putRequest(putPath: string): Observable<any> {
+    putRequest(updateData: any, putPath: string): Observable<any> {
       const headers = new HttpHeaders({
         'Authorization': 'Bearer ' + sessionStorage.getItem('auth_token')
       });
-      return this.http.put<any>(API_URL + putPath, { headers });
+      return this.http.put<any>(API_URL + putPath, updateData,{ headers });
     }
 
     postRequest(saveData: any, postPath: string): Observable<any> {
