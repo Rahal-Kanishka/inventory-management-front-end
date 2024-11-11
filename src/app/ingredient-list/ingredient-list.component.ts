@@ -7,9 +7,12 @@ import { Modal } from 'bootstrap';
 import { FormControl, FormGroup } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { IngredientAddComponent } from "../ingredient-add/ingredient-add.component";
+import { EditCellComponent } from "../common/edit-cell/edit-cell.component";
+import { IngredientEditComponent } from "../ingredient-edit/ingredient-edit.component";
 
 const GET_INGREDIENTS = '/ingredient/all'
 const ADD_INGREDIENTS = '/ingredient/add'
+
 @Component({
   selector: 'app-ingredient-list',
   templateUrl: './ingredient-list.component.html',
@@ -18,9 +21,17 @@ const ADD_INGREDIENTS = '/ingredient/add'
 export class IngredientListComponent {
 
   @ViewChild(IngredientAddComponent) ingredientAddComponent!: IngredientAddComponent;
+  @ViewChild(IngredientEditComponent) ingredientEditComponent!: IngredientEditComponent;
 
   openModal() {
     this.ingredientAddComponent.openModal();
+  }
+
+  context = { componentParent: this };
+
+  openModalFromCellRenderer(data: any) {
+    // Pass the data to the modal component
+    this.ingredientEditComponent.openEditModal(data);
   }
 
   public ingredientList: any[] = []
@@ -29,10 +40,15 @@ export class IngredientListComponent {
     { field: 'id' },
     { field: 'name' },
     { field: 'description' },
-    { field: 'currentQuantity' }
+    { field: 'currentQuantity' },
+    {
+      field: '',
+      cellRenderer: EditCellComponent
+    }
   ];
 
   ingredientForm: FormGroup;
+
   constructor(private backEndService: BackEndService, private toastrService: ToastrService) {
     this.getIngredientData();
     document.getElementById('exampleModal')?.addEventListener('shown.bs.modal', () => {
@@ -50,13 +66,6 @@ export class IngredientListComponent {
     rowHeight: 45,
     autoSizeStrategy: {
       type: 'fitGridWidth'
-    },
-    getRowStyle: params => {
-      if (params && params.node.rowIndex && params.node.rowIndex % 2 === 1) {
-        return { background: 'gray' };
-      } else {
-        return { background: 'white' };
-      }
     }
   }
 
@@ -64,11 +73,14 @@ export class IngredientListComponent {
     this.backEndService.getRequest(GET_INGREDIENTS)
       .pipe(take(1))
       .subscribe(
-        {next: (response) => this.ingredientList = response}
-    )
+        { next: (response) => this.ingredientList = response }
+      )
   }
 
   onModalClosed(addedRecord: any) {
+    this.ingredientList = [...this.ingredientList, addedRecord];
+  }
+  onEditModalClosed(addedRecord: any) {
     this.ingredientList = [...this.ingredientList, addedRecord];
   }
 }
