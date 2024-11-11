@@ -11,12 +11,13 @@ export class GridComponent {
 
   @Input() gridData: any[] = [];
   @Input() columnDefs: ColDef[] = [];
-
-  public gridOptions: GridOptions = {
+  @Input() gridOptions: GridOptions = {
     rowHeight: 45,
     autoSizeStrategy: {
       type: 'fitGridWidth'
     }
   }
+  @Input() context: any = null;
+
 
 }
