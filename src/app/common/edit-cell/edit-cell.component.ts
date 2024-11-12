@@ -5,7 +5,7 @@ import { ICellRendererParams } from "ag-grid-community";
 @Component({
   selector: 'app-edit-cell',
   template: `
-    <button class="btn btn-primary" (click)="openEditModal()">Edit</button>
+    <button class="btn btn-primary" style="width: 40%; margin-top: 1.5px" (click)="openEditModal()">Edit</button>
   `,
   styles: ``
 })
