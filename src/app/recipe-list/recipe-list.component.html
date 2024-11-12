@@ -1,0 +1,13 @@
+<!-- Button trigger modal -->
+<button type="button" (click)="openModal()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Add Recipe
+</button>
+
+<!-- Modal -->
+<app-recipe-add #recipeAddComponent (modalClosed)="onAddModalClosed($event)"></app-recipe-add>
+<app-recipe-edit #recipeEditComponent (modalClosed)="onEditModalClosed($event)"></app-recipe-edit>
+
+<app-grid
+  [gridData]="recipeList"
+  [columnDefs]="columnDefs"
+  [context]="context"></app-grid>
