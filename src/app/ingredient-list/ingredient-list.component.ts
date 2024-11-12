@@ -81,6 +81,15 @@ export class IngredientListComponent {
     this.ingredientList = [...this.ingredientList, addedRecord];
   }
   onEditModalClosed(addedRecord: any) {
-    this.ingredientList = [...this.ingredientList, addedRecord];
+    let tempList = []
+    for (let ingredient of this.ingredientList){
+      if (addedRecord.id != ingredient.id){
+        tempList.push(ingredient)
+      } else {
+        tempList.push(addedRecord)
+      }
+    }
+    // to trigger grid update
+    this.ingredientList = [...tempList];
   }
 }
