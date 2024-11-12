@@ -40,7 +40,14 @@ export class IngredientListComponent {
     { field: 'id' },
     { field: 'name' },
     { field: 'description' },
-    { field: 'currentQuantity' },
+    { field: 'currentQuantity',
+      cellStyle: function(params) {
+        if (params.value > 0) {
+          return {color: 'green'};
+        } else {
+          return {color: 'red'};
+        }
+      } },
     {
       field: '',
       cellRenderer: EditCellComponent
