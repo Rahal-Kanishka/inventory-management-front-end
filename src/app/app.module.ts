@@ -16,12 +16,17 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { EditCellComponent } from './common/edit-cell/edit-cell.component';
 import { IngredientAddComponent } from "./ingredient-add/ingredient-add.component";
 import { IngredientEditComponent } from "./ingredient-edit/ingredient-edit.component";
+import { RecipeAddComponent } from "./recipe-add/recipe-add.component";
+import { RecipeListComponent } from "./recipe-list/recipe-list.component";
+import { RecipeEditComponent } from "./recipe-edit/recipe-edit.component";
+import { ViewAndEditCellComponent } from "./common/view-and-edit-cell/view-and-edit-cell.component";
 
 const routes: Routes = [
 
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }, // Default route
   { path: 'dashboard', component: DashboardComponent },
   { path: 'ingredient-list', component: IngredientListComponent },
+  { path: 'recipe-list', component: RecipeListComponent },
   { path: 'order-list', component: OrderListComponent },
   { path: '**', component: NotFoundComponent },
 
@@ -37,6 +42,10 @@ const routes: Routes = [
     IngredientAddComponent,
     NotFoundComponent,
     EditCellComponent,
+    RecipeAddComponent,
+    RecipeListComponent,
+    RecipeEditComponent,
+    ViewAndEditCellComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
