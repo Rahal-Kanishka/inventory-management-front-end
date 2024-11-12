@@ -29,9 +29,11 @@ export class IngredientEditComponent {
     private backEndService: BackEndService,
     private toastrService: ToastrService) {
     this.ingredientForm = new FormGroup({
+      id: new FormControl({ value: this.ingredientData?.id , disabled: true}),
       name: new FormControl(this.ingredientData?.name, [Validators.required]),
       description: new FormControl(this.ingredientData?.description, [Validators.required]),
-      currentQuantity: new FormControl(this.ingredientData?.currentQuantity, [Validators.required, Validators.min(0)])
+      currentQuantity: new FormControl(this.ingredientData?.currentQuantity, [Validators.required, Validators.min(0)]),
+      image: new FormControl(this.ingredientData?.image)
     });
   }
 
@@ -56,20 +58,20 @@ export class IngredientEditComponent {
 
   public saveIngredientData() {
     if (!this.ingredientForm.invalid) {
-      this.backEndService.putRequest(this.ingredientForm?.value, EDIT_INGREDIENTS)
+      this.backEndService.putRequest(this.ingredientForm?.getRawValue(), EDIT_INGREDIENTS)
         .pipe(take(1))
         .subscribe(
           {
             next: (response) => {
               // to trigger array update into the grid
               this.addedValue = response;
-              this.toastrService.success(response?.name + ' is saved', 'Successfully added')
+              this.toastrService.success(response?.name + ' is saved', 'Successfully updated')
               // Emit the data
               this.modalClosed.emit(this.addedValue);
               this.clearForm();
               this.closeModal();
             },
-            error: (v) => this.toastrService.error(v?.toString(), 'Error occurred in saving data',)
+            error: (v) => this.toastrService.error(v?.toString(), 'Error occurred in updating data',)
           }
         )
     }
