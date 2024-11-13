@@ -37,7 +37,7 @@ export class IngredientListComponent {
   public ingredientList: any[] = []
 
   columnDefs: ColDef[] = [
-    { field: 'id' },
+    { field: 'id', headerName: 'ID' },
     { field: 'name' },
     { field: 'description' },
     { field: 'currentQuantity',
