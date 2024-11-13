@@ -52,11 +52,20 @@ export class RecipeListComponent {
   }
 
   onAddModalClosed($event: any) {
-
+    this.recipeList = [...this.recipeList, $event];
   }
 
-  onEditModalClosed($event: any) {
-
+  onEditModalClosed($eventData: any) {
+    let tempList = []
+    for (let ingredient of this.recipeList){
+      if ($eventData.id != ingredient.id){
+        tempList.push(ingredient)
+      } else {
+        tempList.push($eventData)
+      }
+    }
+    // to trigger grid update
+    this.recipeList = [...tempList];
   }
 
   openModal() {
