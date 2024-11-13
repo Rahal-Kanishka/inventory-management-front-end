@@ -5,7 +5,7 @@ import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Modal } from "bootstrap";
 import { take } from "rxjs";
 
-const EDIT_RECIPE = '/recipe/update/{recipe_id}'
+const EDIT_RECIPE = '/recipe/update/'
 
 @Component({
   selector: 'app-recipe-edit',
@@ -76,7 +76,7 @@ export class RecipeEditComponent {
 
   public editRecipeData() {
     if (!this.recipeForm.invalid) {
-      this.backEndService.putRequest(this.recipeForm?.getRawValue(), EDIT_RECIPE)
+      this.backEndService.putRequest(this.recipeForm?.getRawValue(), EDIT_RECIPE + this.recipeForm?.getRawValue().id)
         .pipe(take(1))
         .subscribe(
           {
@@ -94,4 +94,13 @@ export class RecipeEditComponent {
         )
     }
   }
+
+  addEmptyIngredientToRecipe() {
+    this.ingredients.push(new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      quantity: new FormControl('', [Validators.required, Validators.min(0)]),
+    }));
+  }
+
+
 }
