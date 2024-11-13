@@ -1,1 +1,44 @@
-<p>recipe-edit works!</p>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" #recipeModel id="recipeModel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <form [formGroup]="recipeForm" (ngSubmit)="editRecipeData()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Recipe</h5>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="ingredientID">ID</label>
+            <input type="email" class="form-control" id="ingredientID" placeholder="ID" formControlName="id">
+          </div>
+          <div class="form-group">
+            <label for="emailInput">Name</label>
+            <input type="email" class="form-control" id="emailInput" placeholder="name" formControlName="name">
+          </div>
+          <div class="form-group">
+            <label for="descInput">Description</label>
+            <input type="email" class="form-control" id="descInput" placeholder="description" formControlName="description">
+          </div>
+          <div class="form-group pt-10" formArrayName="ingredients">
+            <label for="descInput">Ingredients</label>
+            <div *ngFor="let ingredient of ingredients.controls; let i=index" [formGroupName]="i">
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Name" formControlName="name">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Quantity" formControlName="quantity">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <!--use as a div to prevent a submit action when click on close-->
+          <div class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</div>
+          <button type="submit" [disabled]="recipeForm.invalid" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

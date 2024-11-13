@@ -18,12 +18,13 @@ const GET_RECIPE = '/recipe/view_all'
 })
 export class RecipeListComponent {
 
+  @ViewChild(RecipeAddComponent) recipeAddComponent!: RecipeAddComponent;
+  @ViewChild(RecipeEditComponent) recipeEditComponent!: RecipeEditComponent;
 
-  context: any;
+  context = { componentParent: this };
   recipeList: any[] = [];
-  masterColumnDefs: ColDef[] = []
   columnDefs: ColDef[] = [
-    { field: 'id', headerName: 'ID', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'id', headerName: 'ID' },
     { field: 'name' },
     { field: 'description' },
     {
@@ -31,42 +32,6 @@ export class RecipeListComponent {
       cellRenderer: ViewAndEditCellComponent
     }
   ];
-
-  gridOptionsLevel2 = {}
-
-  gridOptionsLevel1 = {
-    masterDetail: true,
-    detailCellRendererParams: {
-      detailGridOptions: this.gridOptionsLevel2,
-      getDetailRowData: function (params: any) {
-        params.successCallback(params.data?.ingredients);
-      }
-    }
-  }
-
-  gridOptions: GridOptions = {
-    rowHeight: 45,
-    autoSizeStrategy: {
-      type: 'fitGridWidth'
-    },
-    masterDetail: true,
-    detailCellRendererParams: {
-      "detailGridOptions": {
-        "columnDefs": this.columnDefs,
-      },
-      "suppressCallback": true,
-    }
-  }
-
-
-  @ViewChild(RecipeAddComponent)
-  recipeAddComponent!
-    :
-    RecipeAddComponent;
-  @ViewChild(RecipeEditComponent)
-  recipeEditComponent!
-    :
-    RecipeEditComponent;
 
   constructor(private backEndService: BackEndService) {
     this.getRecipeData()
@@ -80,17 +45,17 @@ export class RecipeListComponent {
       )
   }
 
-  onAddModalClosed($event
-                     :
-                     any
-  ) {
+  openModalFromCellRenderer(data: any) {
+    // Pass the data to the modal component
+    console.log('call from ell renderer')
+    this.recipeEditComponent.openEditModal(data);
+  }
+
+  onAddModalClosed($event: any) {
 
   }
 
-  onEditModalClosed($event
-                      :
-                      any
-  ) {
+  onEditModalClosed($event: any) {
 
   }
 
