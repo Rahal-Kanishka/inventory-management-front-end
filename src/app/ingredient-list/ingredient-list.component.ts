@@ -84,7 +84,7 @@ export class IngredientListComponent {
       )
   }
 
-  onModalClosed(addedRecord: any) {
+  onAddModalClosed(addedRecord: any) {
     this.ingredientList = [...this.ingredientList, addedRecord];
   }
   onEditModalClosed(addedRecord: any) {
@@ -98,5 +98,9 @@ export class IngredientListComponent {
     }
     // to trigger grid update
     this.ingredientList = [...tempList];
+  }
+
+  processResponseFromServer(recipe: any){
+
   }
 }

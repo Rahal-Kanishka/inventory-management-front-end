@@ -4,7 +4,7 @@
 </button>
 
 <!-- Modal -->
-<app-ingredient-add #ingredientAddComponent  (modalClosed)="onModalClosed($event)"></app-ingredient-add>
+<app-ingredient-add #ingredientAddComponent  (modalClosed)="onAddModalClosed($event)"></app-ingredient-add>
 <app-ingredient-edit #ingredientEditComponent  (modalClosed)="onEditModalClosed($event)"></app-ingredient-edit>
 
 <app-grid [gridData]="ingredientList" [columnDefs]="columnDefs" [context]="context"></app-grid>
