@@ -40,6 +40,7 @@ const routes: Routes = [
     GridComponent,
     IngredientListComponent,
     IngredientAddComponent,
+    IngredientEditComponent,
     NotFoundComponent,
     EditCellComponent,
     RecipeAddComponent,
@@ -55,8 +56,7 @@ const routes: Routes = [
     HttpClientModule,
     ToastrModule.forRoot(),
     AgGridModule,
-    ReactiveFormsModule,
-    IngredientEditComponent
+    ReactiveFormsModule
   ],
   bootstrap: [
     AppComponent
