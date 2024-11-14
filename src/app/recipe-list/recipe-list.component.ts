@@ -69,6 +69,6 @@ export class RecipeListComponent {
   }
 
   openModal() {
-
+    this.recipeAddComponent.openAddRecipeModal();
   }
 }
