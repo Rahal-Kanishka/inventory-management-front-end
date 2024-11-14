@@ -33,10 +33,6 @@ export class RecipeEditComponent {
     });
   }
 
-  ngAfterViewInit(): void {
-    console.log('this.recipeData; ', this.recipeData)
-  }
-
   get ingredients(): FormArray {
     return this.recipeForm.get('ingredients') as FormArray;
   }
