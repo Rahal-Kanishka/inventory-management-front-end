@@ -99,8 +99,4 @@ export class IngredientListComponent {
     // to trigger grid update
     this.ingredientList = [...tempList];
   }
-
-  processResponseFromServer(recipe: any){
-
-  }
 }
