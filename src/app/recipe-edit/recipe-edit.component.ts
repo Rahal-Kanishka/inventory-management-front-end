@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { BackEndService } from "../services/back-end.service";
 import { ToastrService } from "ngx-toastr";
-import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Modal } from "bootstrap";
 import { take } from "rxjs";
 
@@ -99,4 +99,9 @@ export class RecipeEditComponent {
   }
 
 
+  removeIngredient(index: number) {
+    if (index !== -1) {
+      this.ingredients.removeAt(index)
+    }
+  }
 }

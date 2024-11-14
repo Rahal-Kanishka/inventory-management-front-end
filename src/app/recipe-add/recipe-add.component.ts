@@ -80,4 +80,10 @@ export class RecipeAddComponent {
     }
 
   }
+
+  removeIngredient(index: number) {
+    if (index !== -1) {
+      this.ingredients.removeAt(index)
+    }
+  }
 }
