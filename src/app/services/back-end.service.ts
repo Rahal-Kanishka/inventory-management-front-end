@@ -44,7 +44,7 @@ export class BackEndService {
           (response) => {
             return subscriber.next(response)
           }, error => {
-            return subscriber.next(error)
+            return subscriber.error(error)
           }
         );
       });
