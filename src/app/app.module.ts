@@ -20,6 +20,9 @@ import { RecipeAddComponent } from "./recipe-add/recipe-add.component";
 import { RecipeListComponent } from "./recipe-list/recipe-list.component";
 import { RecipeEditComponent } from "./recipe-edit/recipe-edit.component";
 import { ViewAndEditCellComponent } from "./common/view-and-edit-cell/view-and-edit-cell.component";
+import { LocationListComponent } from './location-list/location-list.component';
+import { LocationAddComponent } from './location-add/location-add.component';
+import { LocationEditComponent } from './location-edit/location-edit.component';
 
 const routes: Routes = [
 
@@ -46,7 +49,10 @@ const routes: Routes = [
     RecipeAddComponent,
     RecipeListComponent,
     RecipeEditComponent,
-    ViewAndEditCellComponent
+    ViewAndEditCellComponent,
+    LocationListComponent,
+    LocationAddComponent,
+    LocationEditComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
