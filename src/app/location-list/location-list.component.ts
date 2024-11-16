@@ -68,7 +68,16 @@ export class LocationListComponent {
     this.locationList = [...this.locationList, $event]
   }
 
-  onAddModalEditClosed($event: any) {
-    this.locationList = [...this.locationList, $event]
+  onAddModalEditClosed(updatedLocation: any) {
+    let tempList = []
+    for (let ingredient of this.locationList){
+      if (updatedLocation.id != ingredient.id){
+        tempList.push(ingredient)
+      } else {
+        tempList.push(updatedLocation)
+      }
+    }
+    // to trigger grid update
+    this.locationList = [...tempList];
   }
 }
