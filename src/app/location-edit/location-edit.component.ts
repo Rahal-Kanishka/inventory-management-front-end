@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-location-edit',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './location-edit.component.css'
 })
 export class LocationEditComponent {
+  @Output() modalClosed = new EventEmitter<any>();
 
+  openEditModal(data: any) {
+
+  }
 }
