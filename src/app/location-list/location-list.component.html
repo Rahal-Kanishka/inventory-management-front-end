@@ -1,1 +1,5 @@
-<p>location-list works!</p>
+
+<app-location-edit #locationEditComponent  (modalClosed)="onAddModalClosed($event)"></app-location-edit>
+<app-location-add #locationAddComponent></app-location-add>
+
+<app-grid [gridData]="locationList" [columnDefs]="columnDefs" [context]="context"></app-grid>
