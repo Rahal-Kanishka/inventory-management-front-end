@@ -65,6 +65,10 @@ export class LocationListComponent {
   ];
 
   onAddModalClosed($event: any) {
+    this.locationList = [...this.locationList, $event]
+  }
 
+  onAddModalEditClosed($event: any) {
+    this.locationList = [...this.locationList, $event]
   }
 }
