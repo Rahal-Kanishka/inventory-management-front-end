@@ -31,6 +31,7 @@ const routes: Routes = [
   { path: 'ingredient-list', component: IngredientListComponent },
   { path: 'recipe-list', component: RecipeListComponent },
   { path: 'order-list', component: OrderListComponent },
+  { path: 'location-list', component: LocationListComponent },
   { path: '**', component: NotFoundComponent },
 
 
