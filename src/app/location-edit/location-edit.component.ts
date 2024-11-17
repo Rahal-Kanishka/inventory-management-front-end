@@ -5,6 +5,7 @@ import { BackEndService } from "../services/back-end.service";
 import { ToastrService } from "ngx-toastr";
 import { take } from "rxjs";
 
+const ASSIGN_USERS = '/user/'
 const UPDATE_LOCATION = '/location/update/'
 
 @Component({
@@ -19,6 +20,7 @@ export class LocationEditComponent {
   addedValue = null;
   public locationData: any = null;
   private myModal!: Modal;
+  public assignedUsersList: any[] = []
 
   constructor(
     private backEndService: BackEndService,
@@ -33,6 +35,8 @@ export class LocationEditComponent {
   openEditModal(dataFromParentComponent: any) {
     if(dataFromParentComponent){
       this.locationForm.patchValue(dataFromParentComponent)
+      this.locationData = dataFromParentComponent;
+      this.getAssignUsers();
     }
     this.myModal = new Modal(this.modalElement.nativeElement);
     this.myModal.show();
@@ -63,5 +67,27 @@ export class LocationEditComponent {
           }
         )
     }
+  }
+
+  private getAssignUsers(){
+    this.backEndService.getRequest( ASSIGN_USERS + this.locationData?.id)
+      .pipe(take(1))
+      .subscribe(
+        {
+          next: (response) => {
+            // to trigger array update into the grid
+            this.assignedUsersList = response;
+          },
+          error: (v) => this.toastrService.error(v?.toString(), 'Error occurred in retrieving users data',)
+        }
+      )
+  }
+
+  assignUsersToLocation() {
+
+  }
+
+  removeAssignedUser(userID: any) {
+
   }
 }

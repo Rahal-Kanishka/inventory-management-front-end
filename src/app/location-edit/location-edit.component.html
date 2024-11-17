@@ -26,6 +26,35 @@
           <div class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</div>
           <button type="submit" [disabled]="locationForm.invalid" class="btn btn-primary">Save changes</button>
         </div>
+        <!-- Assigned users list--->
+        <div class="modal-body row" style="margin-top: 10px;">
+          <button type="button" (click)="assignUsersToLocation()" class="btn btn-primary">
+            Assign User
+          </button>
+        </div>
+        <div class="modal-body pt-10">
+          <ng-container *ngIf="!assignedUsersList || assignedUsersList.length === 0; else elsePart">
+            <div class="alert alert-primary mt-3" role="alert">
+              No UsersAssigned
+            </div>
+          </ng-container>
+          <ng-template #elsePart>
+            <label for="descInput">Users</label>
+            <div *ngFor="let assignedUser of assignedUsersList; let i=index">
+              <div class="row" style="margin-top: 10px;">
+                <div class="col">
+                 {{assignedUser?.name}}
+                </div>
+                <div class="col">
+                  {{assignedUser?.email}}
+                </div>
+                <div class="col">
+                  <button type="button" (click)="removeAssignedUser(assignedUser?.id)" class="btn btn-danger">remove</button>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
       </div>
     </form>
   </div>
