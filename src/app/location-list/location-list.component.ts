@@ -10,7 +10,7 @@ import { BackEndService } from "../services/back-end.service";
 import { ToastrService } from "ngx-toastr";
 import { take } from "rxjs";
 
-const GET_INGREDIENTS = '/location/list'
+const GET_INGREDIENTS = '/location/users/all'
 @Component({
   selector: 'app-location-list',
   templateUrl: './location-list.component.html',
