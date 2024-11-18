@@ -31,6 +31,13 @@ export class BackEndService {
       return this.http.put<any>(API_URL + putPath, updateData,{ headers });
     }
 
+    deleteRequest(deletePath: string): Observable<any> {
+      const headers = new HttpHeaders({
+        'Authorization': 'Bearer ' + sessionStorage.getItem('auth_token')
+      });
+      return this.http.delete<any>(API_URL + deletePath,{ headers });
+    }
+
     postRequest(saveData: any, postPath: string): Observable<any> {
 
       const httpOptions = {
