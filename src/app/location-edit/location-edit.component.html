@@ -26,21 +26,47 @@
           <div class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</div>
           <button type="submit" [disabled]="locationForm.invalid" class="btn btn-primary">Save changes</button>
         </div>
-        <!-- Assigned users list--->
-        <div class="modal-body row" style="margin-top: 10px;">
-          <button type="button" (click)="assignUsersToLocation()" class="btn btn-primary">
-            Assign User
-          </button>
+        <!-- search user by name -->
+        <div class="modal-body suggested-box row mt-10" style="margin-top: 10px;">
+          <div class="row">
+            <div class="row">
+              Search User to assign
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <input type="email" id="name-input" (keyup)="findUsersByName($event)" >
+            </div>
+          </div>
+          <div class="modal-body suggested-box pt-10 mt-10">
+            <ng-container *ngIf="suggestedUsersList && suggestedUsersList.length >= 0">
+              <label for="descInput">Suggested users</label>
+              <div *ngFor="let suggestedUser of suggestedUsersList">
+                <div class="row" style="margin-top: 10px;">
+                  <div class="col">
+                    {{suggestedUser?.name}}
+                  </div>
+                  <div class="col">
+                    {{suggestedUser?.email}}
+                  </div>
+                  <div class="col">
+                    <button type="button" (click)="assignUser(suggestedUser?.id)" class="btn btn-primary">Assign</button>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
         </div>
+        <!-- Assigned users list--->
         <div class="modal-body pt-10">
           <ng-container *ngIf="!assignedUsersList || assignedUsersList.length === 0; else elsePart">
             <div class="alert alert-primary mt-3" role="alert">
-              No UsersAssigned
+              No UsersAssigned Users
             </div>
           </ng-container>
           <ng-template #elsePart>
             <label for="descInput">Users</label>
-            <div *ngFor="let assignedUser of assignedUsersList; let i=index">
+            <div *ngFor="let assignedUser of assignedUsersList">
               <div class="row" style="margin-top: 10px;">
                 <div class="col">
                  {{assignedUser?.name}}
