@@ -50,9 +50,9 @@ export class LocationListComponent {
     { field: 'name' },
     { field: 'address' },
     { field: 'assignedStaff',
-      valueFormatter: (params: any) =>( params! && !params.data ) ? 0: params.data?.users.length,
+      valueFormatter: (params: any) =>( !params && !params.data && !params.data.users ) ? 0: params.data?.users.length,
       cellStyle: function(params) {
-        if (params.data && params.data?.users && params.data?.users.length > 0) {
+        if (params && params.data && params.data.users && params.data.users.length > 0) {
           return { color: 'green' };
         } else {
           return { color: 'red' };
@@ -65,6 +65,9 @@ export class LocationListComponent {
   ];
 
   onAddModalClosed($event: any) {
+    console.log('location add: ', $event)
+    // make it compatible to the grid data
+    $event = {...$event, users: [] }
     this.locationList = [...this.locationList, $event]
   }
 
