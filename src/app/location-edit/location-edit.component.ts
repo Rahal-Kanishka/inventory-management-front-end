@@ -7,7 +7,7 @@ import { take } from "rxjs";
 
 const GET_ASSIGN_USERS = '/user/location/'
 const UPDATE_LOCATION = '/location/update/'
-const SEARCH_USER = '/user/'
+const SEARCH_USER = '/user/search_by_name'
 const ASSIGN_USER = '/location/assign_user/'
 const REMOVE_USER_FROM_LOCATION = '/location/remove_user/'
 
@@ -107,7 +107,11 @@ export class LocationEditComponent {
     let inputElement: any = document.getElementById('name-input')
     console.log('button: ', inputElement?.value)
     if (inputElement && inputElement?.value) {
-      this.backEndService.getRequest(SEARCH_USER + inputElement?.value)
+      const searchData = {
+        locationID: this.locationData?.id,
+        name: inputElement?.value
+      }
+      this.backEndService.getRequest(SEARCH_USER, searchData )
         .pipe(take(1))
         .subscribe(
           {
