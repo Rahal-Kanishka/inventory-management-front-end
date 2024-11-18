@@ -117,6 +117,8 @@ export class LocationEditComponent {
             error: (v) => this.toastrService.error(v?.toString(), 'Error occurred in retrieving users data')
           }
         )
+    } else {
+      this.suggestedUsersList = []
     }
   }
 
