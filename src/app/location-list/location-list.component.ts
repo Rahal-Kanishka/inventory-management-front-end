@@ -50,12 +50,12 @@ export class LocationListComponent {
     { field: 'name' },
     { field: 'address' },
     { field: 'assignedStaff',
-      valueFormatter: (params: any) =>( params! || !params.value) ? 0: params.value,
+      valueFormatter: (params: any) =>( params! && !params.data ) ? 0: params.data?.users.length,
       cellStyle: function(params) {
-        if (params.value > 0) {
-          return {color: 'green'};
+        if (params.data && params.data?.users && params.data?.users.length > 0) {
+          return { color: 'green' };
         } else {
-          return {color: 'red'};
+          return { color: 'red' };
         }
       } },
     {
@@ -79,5 +79,16 @@ export class LocationListComponent {
     }
     // to trigger grid update
     this.locationList = [...tempList];
+  }
+
+  onUserAddOrRemove($eventData: any){
+    if($eventData){
+      this.locationList = this.locationList.map(location => {
+        if (location.id === $eventData.location_id) {
+          return { ...location, users: $eventData.users };
+        }
+        return location;
+      });
+    }
   }
 }

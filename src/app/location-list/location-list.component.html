@@ -1,7 +1,7 @@
 <button type="button" (click)="openModal()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Add Location
 </button>
-<app-location-edit #locationEditComponent  (modalClosed)="onAddModalEditClosed($event)"></app-location-edit>
+<app-location-edit #locationEditComponent (userAddOrRemove)="onUserAddOrRemove($event)"  (modalClosed)="onAddModalEditClosed($event)"></app-location-edit>
 <app-location-add #locationAddComponent (modalClosed)="onAddModalClosed($event)"></app-location-add>
 
 <app-grid [gridData]="locationList" [columnDefs]="columnDefs" [context]="context"></app-grid>
