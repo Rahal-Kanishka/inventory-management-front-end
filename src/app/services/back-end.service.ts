@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from "@angular/router";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { ColDef } from "ag-grid-community";
 
@@ -16,11 +16,20 @@ export class BackEndService {
     private router: Router
   ) {}
 
-    getRequest(getPath: string): Observable<any> {
+    getRequest(getPath: string, dataObject?: any): Observable<any> {
       const headers = new HttpHeaders({
         'Authorization': 'Bearer ' + sessionStorage.getItem('auth_token')
       });
-      return this.http.get<any>(API_URL + getPath, { headers });
+
+      let httpParams = new HttpParams();
+
+      if (dataObject) {
+        // Add parameters to HttpParams object
+        Object.keys(dataObject).forEach(key => {
+          httpParams = httpParams.append(key, dataObject[key]);
+        });
+      }
+      return this.http.get<any>(API_URL + getPath, { headers: headers, params: httpParams});
     }
 
 
