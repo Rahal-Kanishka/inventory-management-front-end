@@ -23,6 +23,9 @@ import { ViewAndEditCellComponent } from "./common/view-and-edit-cell/view-and-e
 import { LocationListComponent } from './location-list/location-list.component';
 import { LocationAddComponent } from './location-add/location-add.component';
 import { LocationEditComponent } from './location-edit/location-edit.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserAddComponent } from './user-add/user-add.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 const routes: Routes = [
 
@@ -53,7 +56,10 @@ const routes: Routes = [
     ViewAndEditCellComponent,
     LocationListComponent,
     LocationAddComponent,
-    LocationEditComponent
+    LocationEditComponent,
+    UserListComponent,
+    UserAddComponent,
+    UserEditComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
