@@ -34,6 +34,7 @@ const routes: Routes = [
 
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }, // Default route
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'grn-list', component: GrnListComponent },
   { path: 'ingredient-list', component: IngredientListComponent },
   { path: 'recipe-list', component: RecipeListComponent },
   { path: 'order-list', component: OrderListComponent },
