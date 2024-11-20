@@ -35,6 +35,7 @@ const routes: Routes = [
   { path: 'recipe-list', component: RecipeListComponent },
   { path: 'order-list', component: OrderListComponent },
   { path: 'location-list', component: LocationListComponent },
+  { path: 'user-list', component: UserListComponent },
   { path: '**', component: NotFoundComponent },
 
 
