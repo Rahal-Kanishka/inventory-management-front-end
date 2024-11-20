@@ -1,1 +1,8 @@
-<p>user-list works!</p>
+<button type="button" (click)="openAddModal()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Add User
+</button>
+
+<app-user-edit #userEditComponent  (onUserEditedUsingModal)="onUserEdited($event)"></app-user-edit>
+<app-user-add #userAddComponent (onUserAddedFromModal)="onUserAdded($event)"></app-user-add>
+
+<app-grid [gridData]="userList" [columnDefs]="columnDefs" [context]="context"></app-grid>
