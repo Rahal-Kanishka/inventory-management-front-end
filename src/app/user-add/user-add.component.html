@@ -1,1 +1,95 @@
-<p>user-add works!</p>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="userAddModel" #userAddModel
+     id="userAddModel"
+     aria-hidden="true">
+  <div class="modal-dialog  modal-lg" role="document">
+    <form [formGroup]="userFormGroup" (ngSubmit)="addUser()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create User</h5>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="nameInput">Name</label>
+            <input type="email" class="form-control" id="nameInput" placeholder="name" formControlName="name">
+          </div>
+          <ng-container
+            *ngIf="userFormGroup.get('name')?.touched && userFormGroup.get('name')?.hasError('required')">
+            <div class="error-message">
+              <sup>*</sup>Please provide a Name
+            </div>
+          </ng-container>
+          <div class="form-group">
+            <label for="emailInput">Email</label>
+            <input type="email" class="form-control" id="emailInput" placeholder="email" formControlName="email">
+          </div>
+          <ng-container
+            *ngIf="userFormGroup.get('email')?.touched && userFormGroup.get('email')?.hasError('required')">
+            <div class="error-message">
+              <sup>*</sup>Please provide an Email
+            </div>
+          </ng-container>
+          <div class="form-group">
+            <label for="addInput">Contact No</label>
+            <input type="email" class="form-control" id="addInput" placeholder="contact No" formControlName="contactNo">
+          </div>
+          <ng-container
+            *ngIf="userFormGroup.get('contactNo')?.touched && userFormGroup.get('contactNo')?.hasError('required')">
+            <div class="error-message">
+              <sup>*</sup>Please provide a Contact No
+            </div>
+          </ng-container>
+          <div class="form-group">
+            <label for="typeSelect">User Type</label>
+            <div class="row" style="padding: 12px;">
+              <select class="btn btn-primary" id="typeSelect"
+                      formControlName="UserType_id">
+                <option *ngFor="let type of userTypes" [ngValue]="type.id">{{ type?.name }}</option>
+              </select>
+              <ng-container *ngIf="userFormGroup.get('UserType_id')?.touched
+               && userFormGroup.get('UserType_id')?.hasError('min')">
+                <div class="error-message">
+                  <sup>*</sup>Please select User Type
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="passInput">Password</label>
+            <input type="password" class="form-control" id="passInput" placeholder="password"
+                   formControlName="password">
+          </div>
+          <ng-container
+            *ngIf="userFormGroup.get('password')?.touched && userFormGroup.get('password')?.hasError('required')">
+            <div class="error-message">
+              <sup>*</sup>Please provide password
+            </div>
+          </ng-container>
+          <div class="form-group">
+            <label for="confirmInput">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmInput" placeholder="confirm password"
+                   formControlName="confirmPassword">
+          </div>
+          <ng-container *ngIf="userFormGroup.get('confirmPassword')?.touched
+           && userFormGroup.get('confirmPassword')?.hasError('required')">
+            <div class="error-message">
+              <sup>*</sup>Please provide Confirm password
+            </div>
+          </ng-container>
+          <ng-container *ngIf="userFormGroup.get('confirmPassword')?.touched
+           && userFormGroup.get('confirmPassword')?.value != userFormGroup.get('password')?.value">
+            <div class="error-message">
+              <sup>*</sup>Passwords doesn't match
+            </div>
+          </ng-container>
+        </div>
+        <div class="modal-footer">
+          <!--use as a div to prevent a submit action when click on close-->
+          <div class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</div>
+          <button type="submit" [disabled]="userFormGroup.invalid" class="btn btn-primary">Save changes</button>
+        </div>
+
+
+      </div>
+    </form>
+  </div>
+</div>
