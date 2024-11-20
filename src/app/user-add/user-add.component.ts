@@ -75,7 +75,7 @@ export class UserAddComponent {
               this.clearForm();
               this.closeModal();
             },
-            error: (v) => this.toastrService.error(v?.toString(), 'Error occurred in saving data',)
+            error: (v) => this.toastrService.error(v?.error?.detail, 'Error occurred in saving data',)
           }
         )
     }
