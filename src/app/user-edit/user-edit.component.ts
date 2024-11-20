@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user-edit',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './user-edit.component.css'
 })
 export class UserEditComponent {
+  @Output() onUserEditedUsingModal = new EventEmitter<any>();
 
+  openEditModal(data: any) {
+
+  }
 }
