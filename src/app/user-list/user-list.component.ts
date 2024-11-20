@@ -91,13 +91,13 @@ export class UserListComponent {
     this.userList = [...this.userList, this.userList[0]]
   }
 
-  onUserEdited(updatedUser: any) {
+  onUserEdited(updatedModalUserData: any) {
     let tempList = []
-    for (let ingredient of this.userList){
-      if (updatedUser.id != ingredient.id){
-        tempList.push(ingredient)
-      } else {
+    for (let updatedUser of this.userList){
+      if (updatedUser.id != updatedModalUserData.id){
         tempList.push(updatedUser)
+      } else {
+        tempList.push(updatedModalUserData)
       }
     }
     // to trigger grid update
