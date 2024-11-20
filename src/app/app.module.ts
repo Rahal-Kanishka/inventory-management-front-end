@@ -26,6 +26,9 @@ import { LocationEditComponent } from './location-edit/location-edit.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserAddComponent } from './user-add/user-add.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { GrnListComponent } from './grn/grn-list/grn-list.component';
+import { GrnAddComponent } from './grn/grn-add/grn-add.component';
+import { GrnEditComponent } from './grn/grn-edit/grn-edit.component';
 
 const routes: Routes = [
 
@@ -60,7 +63,10 @@ const routes: Routes = [
     LocationEditComponent,
     UserListComponent,
     UserAddComponent,
-    UserEditComponent
+    UserEditComponent,
+    GrnListComponent,
+    GrnAddComponent,
+    GrnEditComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
