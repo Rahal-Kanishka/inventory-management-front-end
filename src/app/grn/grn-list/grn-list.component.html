@@ -1,1 +1,7 @@
-<p>grn-list works!</p>
+<button type="button" (click)="openModal()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Add GRN
+</button>
+<app-grn-add #grnAddComponent (onGrnAdd)="onGrnAddModalClosed($event)"></app-grn-add>
+<app-grn-edit #grnEditComponentComponent (onGrnEdit)="onGrnEditModalClosed($event)"></app-grn-edit>
+
+<app-grid [gridData]="grnList" [columnDefs]="columnDefs" [context]="context"></app-grid>
