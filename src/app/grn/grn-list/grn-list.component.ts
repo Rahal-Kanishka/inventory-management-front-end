@@ -33,7 +33,7 @@ export class GrnListComponent {
       )
   }
   openModal() {
-    this.grnAddComponent.openAddModal();
+    this.grnAddComponent.openGRNAddModal();
   }
 
   context = { componentParent: this };
@@ -72,9 +72,7 @@ export class GrnListComponent {
   ];
 
   onGrnAddModalClosed($event: any) {
-    console.log('location add: ', $event)
-    // make it compatible to the grid data
-    $event = {...$event, users: [] }
+    console.log('GRN add: ', $event)
     this.grnList = [...this.grnList, $event]
   }
 
