@@ -1,1 +1,54 @@
-<p>grn-edit works!</p>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" #updateGRNModel id="updateGRNModel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <form [formGroup]="grnForm" (ngSubmit)="UpdateGRNData()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Good Received Note (GRN)</h5>
+        </div>
+        <div class="modal-body">
+          <!-- ID start-->
+          <div class="form-group">
+            <label for="locationID">ID</label>
+            <input type="email" class="form-control" id="locationID" placeholder="ID" formControlName="id">
+          </div>
+          <!-- ID end-->
+          <div class="row" style="margin-top: 10px;">
+            <button type="button" (click)="addEmptyIngredientToRecipe()" class="btn btn-primary" >
+              Add Ingredient
+            </button>
+          </div>
+          <div class="form-group pt-10" formArrayName="ingredients">
+            <ng-container *ngIf="!ingredients.controls || (ingredients.controls?.length) === 0; else elsePart">
+              <div class="alert alert-primary mt-3" role="alert">
+                No Ingredients
+              </div>
+            </ng-container>
+            <ng-template #elsePart>
+              <!-- Ingredient List ADD/Remove -->
+              <label>Ingredients</label>
+              <div *ngFor="let ingredient of ingredients.controls; let i=index" [formGroupName]="i">
+                <div class="row" style="margin-top: 10px;">
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Ingredient Name" formControlName="name">
+                  </div>
+                  <div class="col">
+                    <input type="number" class="form-control" placeholder="Quantity" formControlName="quantity">
+                  </div>
+                  <div class="col">
+                    <button type="button" (click)="removeIngredient(i)" class="btn btn-danger">remove</button>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <!--use as a div to prevent a submit action when click on close-->
+          <div class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</div>
+          <button type="submit" [disabled]="grnForm.invalid" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
