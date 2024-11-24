@@ -40,7 +40,7 @@ export class GrnListComponent {
 
   openModalFromCellRenderer(data: any) {
     // Pass the data to the modal component
-    this.grnEditComponent.openEditModal(data);
+    this.grnEditComponent.openGRNEditModal(data);
   }
 
   columnDefs: ColDef[] = [
