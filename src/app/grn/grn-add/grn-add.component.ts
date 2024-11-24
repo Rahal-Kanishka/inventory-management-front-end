@@ -12,10 +12,9 @@ const ADD_GRN = '/grn/add/'
   styleUrl: './grn-add.component.css'
 })
 export class GrnAddComponent {
-  @Output() onGrnAdd = new EventEmitter<any>();
+  @Output() onGRNAddEvent = new EventEmitter<any>();
 
   @ViewChild('addGRNModel', { static: true }) modalElement!: ElementRef;
-  @Output() onGRNAddEvent = new EventEmitter<any>();
   grnForm: FormGroup;
   addedValue = null;
   public recipeData: any = null;
@@ -63,7 +62,7 @@ export class GrnAddComponent {
             next: (response) => {
               // to trigger array update into the grid
               this.addedValue = response;
-              this.toastrService.success('GRN ID:' + response?.id + ' is saved', 'Successfully updated')
+              this.toastrService.success('GRN ID:' + response?.id + ' is saved', 'Successfully Added')
               // Emit the data
               this.onGRNAddEvent.emit(this.addedValue);
               this.clearForm();
