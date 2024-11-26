@@ -28,8 +28,7 @@ export class IngredientEditComponent {
       id: new FormControl({ value: this.ingredientData?.id , disabled: true}),
       name: new FormControl(this.ingredientData?.name, [Validators.required]),
       description: new FormControl(this.ingredientData?.description, [Validators.required]),
-      currentQuantity: new FormControl(this.ingredientData?.currentQuantity, [Validators.required, Validators.min(0)]),
-      image: new FormControl(this.ingredientData?.image)
+      totalQuantity: new FormControl({ value: this.ingredientData?.totalQuantity , disabled: true}, [Validators.required, Validators.min(0)]),
     });
   }
 
