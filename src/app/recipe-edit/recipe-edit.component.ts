@@ -78,7 +78,7 @@ export class RecipeEditComponent {
           {
             next: (response) => {
               // to trigger array update into the grid
-              this.addedValue = response;
+              this.addedValue = response[0];
               this.toastrService.success(response?.name + ' is saved', 'Successfully updated')
               // Emit the data
               this.modalClosed.emit(this.addedValue);
