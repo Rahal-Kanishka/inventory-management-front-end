@@ -29,6 +29,9 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { GrnListComponent } from './grn/grn-list/grn-list.component';
 import { GrnAddComponent } from './grn/grn-add/grn-add.component';
 import { GrnEditComponent } from './grn/grn-edit/grn-edit.component';
+import { ProductAddComponent } from './product/product-add/product-add.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
 
 const routes: Routes = [
 
@@ -67,7 +70,10 @@ const routes: Routes = [
     UserEditComponent,
     GrnListComponent,
     GrnAddComponent,
-    GrnEditComponent
+    GrnEditComponent,
+    ProductAddComponent,
+    ProductListComponent,
+    ProductEditComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
