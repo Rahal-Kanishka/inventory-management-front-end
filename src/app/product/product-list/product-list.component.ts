@@ -61,20 +61,22 @@ export class ProductListComponent {
     this.productAddComponent.openAddProductModal();
   }
 
-  onAddModalClosed($eventData: any) {
+  onAddModalClosed($event: any) {
+    console.log('product add: ', $event)
+    // make it compatible to the grid data
+    $event = {...$event, users: [] }
+    this.productList = [...this.productList, $event]
+  }
+  onEditModalClosed(updatedLocation: any) {
     let tempList = []
     for (let ingredient of this.productList){
-      if ($eventData.id != ingredient.id){
+      if (updatedLocation.id != ingredient.id){
         tempList.push(ingredient)
       } else {
-        tempList.push($eventData)
+        tempList.push(updatedLocation)
       }
     }
     // to trigger grid update
     this.productList = [...tempList];
-  }
-
-  onEditModalClosed($event: any) {
-    this.productAddComponent.openAddProductModal();
   }
 }
