@@ -65,7 +65,7 @@ export class ProductAddComponent {
             next: (response) => {
               // to trigger array update into the grid
               this.addedValue = response;
-              this.toastrService.success(response?.name + ' is saved', 'Successfully updated')
+              this.toastrService.success(response?.name + ' is saved', 'Successfully Added')
               // Emit the data
               this.modalClosed.emit(this.addedValue);
               this.clearForm();
