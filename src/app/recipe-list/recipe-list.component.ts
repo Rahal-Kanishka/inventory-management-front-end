@@ -1,13 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { IngredientEditComponent } from "../ingredient-edit/ingredient-edit.component";
 import { RecipeAddComponent } from "../recipe-add/recipe-add.component";
-import { ColDef, GridOptions } from "ag-grid-community";
-import { IngredientAddComponent } from "../ingredient-add/ingredient-add.component";
+import { ColDef } from "ag-grid-community";
 import { RecipeEditComponent } from "../recipe-edit/recipe-edit.component";
 import { take } from "rxjs";
 import { BackEndService } from "../services/back-end.service";
 import { EditCellComponent } from "../common/edit-cell/edit-cell.component";
-import { ViewAndEditCellComponent } from "../common/view-and-edit-cell/view-and-edit-cell.component";
 
 const GET_RECIPE = '/recipe/view_all'
 
@@ -27,9 +24,19 @@ export class RecipeListComponent {
     { field: 'id', headerName: 'ID' },
     { field: 'name' },
     { field: 'description' },
+    { field: 'ingredients', headerName: 'Ingredients',
+      valueFormatter: (params: any) =>( !params && !params.data && !params.data.ingredients ) ? 0: params.data?.ingredients.length,
+      cellStyle: function(params) {
+        if (params && params.data && params.data.ingredients && params.data.ingredients.length > 0) {
+          return { color: 'green' };
+        } else {
+          return { color: 'red' };
+        }
+      }
+      },
     {
       field: '',
-      cellRenderer: ViewAndEditCellComponent
+      cellRenderer: EditCellComponent
     }
   ];
 
@@ -57,9 +64,9 @@ export class RecipeListComponent {
 
   onEditModalClosed($eventData: any) {
     let tempList = []
-    for (let ingredient of this.recipeList){
-      if ($eventData.id != ingredient.id){
-        tempList.push(ingredient)
+    for (let recipe of this.recipeList){
+      if ($eventData.id != recipe.id){
+        tempList.push(recipe)
       } else {
         tempList.push($eventData)
       }
