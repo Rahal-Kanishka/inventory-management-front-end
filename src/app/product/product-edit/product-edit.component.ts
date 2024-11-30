@@ -34,6 +34,8 @@ export class ProductEditComponent {
       description: new FormControl('', [Validators.required]),
       type: new FormControl('', [Validators.required]),
       selling_price: new FormControl('', [Validators.required]),
+      batch_size: new FormControl('', [Validators.required]),
+      expire_duration: new FormControl('', [Validators.required]),
       Recipe_id: new FormControl('', [Validators.required]),
     });
   }

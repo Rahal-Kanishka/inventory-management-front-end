@@ -29,7 +29,16 @@ export class ProductListComponent {
     { field: 'description' },
     { field: 'selling_price', headerName: 'Price',
       valueFormatter: params => params.data.selling_price.toFixed(2),
+      cellStyle: function(params) {
+        if (parseFloat(params.data.selling_price) < 1.00) {
+          return { color: 'red' };
+        } else {
+          return { color: 'green' };
+        }
+      }
     },
+    { field: 'batch_size', headerName: 'Batch Size'},
+    { field: 'expire_duration', headerName: 'Expire Duration'},
     { field: 'recipe',
       valueFormatter: (params: any) =>( !params && !params.data && !params.data.recipe ) ? 'No Recipe': params.data?.recipe.name,
     },
