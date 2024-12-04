@@ -15,7 +15,7 @@ export class RecipeAddComponent {
   @ViewChild('recipeModel', { static: true }) modalElement!: ElementRef;
   @Output() modalClosed = new EventEmitter<any>();
   recipeForm: FormGroup;
-  addedValue = null;
+  addedValue: any | null = null;
   public recipeData: any = null;
   private myModal!: Modal;
 
@@ -67,8 +67,8 @@ export class RecipeAddComponent {
           {
             next: (response) => {
               // to trigger array update into the grid
-              this.addedValue = response;
-              this.toastrService.success(response?.name + ' is saved', 'Successfully updated')
+              this.addedValue = response ? response[0] : null;
+              this.toastrService.success(this.addedValue?.name + ' is saved', 'Successfully updated')
               // Emit the data
               this.modalClosed.emit(this.addedValue);
               this.clearForm();
