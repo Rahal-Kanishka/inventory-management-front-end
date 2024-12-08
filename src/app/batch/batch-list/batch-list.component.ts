@@ -26,7 +26,7 @@ export class BatchListComponent {
     // other grid options ...
   }
   columnDefs: ColDef[] = [
-    { field: 'id', headerName: 'ID',  maxWidth: 100 },
+    { field: 'id', headerName: 'ID', minWidth: 50},
     { field: 'name', minWidth: 300, },
     { field: 'Product',
       maxWidth: 120,
