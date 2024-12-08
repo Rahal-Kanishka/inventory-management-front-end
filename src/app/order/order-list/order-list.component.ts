@@ -1,26 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ColDef, GridOptions } from "ag-grid-community";
-import { BackEndService } from "../services/back-end.service";
+import { BackEndService } from "../../services/back-end.service";
 import { ToastrService } from "ngx-toastr";
 import { AgGridAngular } from "ag-grid-angular";
+import { BatchAddComponent } from "../../batch/batch-add/batch-add.component";
+import { OrderAddComponent } from "../order-add/order-add.component";
 
 @Component({
   selector: 'app-order-list',
-  standalone: true,
-  imports: [
-    AgGridAngular
-  ],
   templateUrl: './order-list.component.html',
   styleUrl: './order-list.component.css'
 })
 export class OrderListComponent {
+  @ViewChild(OrderAddComponent) orderAddComponent!: OrderAddComponent;
+
+  context = { componentParent: this };
 
   rowData: any = []
 
   columnDefs: ColDef[] = [
     { field: 'id' },
     { field: 'name' },
-    { field: 'quantity' }
+    { field: 'quantity' },
+    { field: 'batch_name', headerName: 'Batch' },
   ];
 
   public gridOptions: GridOptions = {
@@ -55,5 +57,13 @@ export class OrderListComponent {
       }
     )
 
+  }
+
+  onAddModalClosed($event: any) {
+    this.rowData = [...this.rowData, $event];
+  }
+
+  openAddModal() {
+    this.orderAddComponent.openAddOrderModal();
   }
 }
