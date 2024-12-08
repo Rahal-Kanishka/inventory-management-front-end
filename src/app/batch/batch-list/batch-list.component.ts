@@ -29,15 +29,35 @@ export class BatchListComponent {
     { field: 'id', headerName: 'ID',  maxWidth: 100 },
     { field: 'name', minWidth: 300, },
     { field: 'Product',
-      maxWidth: 100,
+      maxWidth: 120,
       valueFormatter: function (params){
         return params?.data?.product?.name
       } },
-    { field: 'Product Type', valueFormatter: function (params){
+    { field: 'Product Type',
+      headerName: 'Type',
+      valueFormatter: function (params){
       return params?.data?.product?.type
       } },
-    { field: 'initialQuantity' },
-    { field: 'availableQuantity',
+    { field: 'productionDate',
+      headerName: 'Created On',
+      valueFormatter: (params: any) => {
+        if (params.data && params.data?.productionDate) {
+          const date = new Date(params.data?.productionDate);
+          return date.toLocaleString().split(',')[0]; // get only the date
+        }
+        return 'No Date Provided'
+      }},
+    { field: 'dateOfExpiry',
+      headerName: 'Expire On',
+      valueFormatter: (params: any) => {
+        if (params.data && params.data?.dateOfExpiry) {
+          const date = new Date(params.data?.dateOfExpiry);
+          return date.toLocaleString().split(',')[0]; // get only the date
+        }
+        return 'No Date Provided'
+      }},
+    { field: 'initialQuantity', headerName: 'Initial' },
+    { field: 'availableQuantity', headerName: 'Available',
       cellStyle: function(params) {
         if (params && params?.data && params.data?.availableQuantity) {
           return { color: 'green' };
