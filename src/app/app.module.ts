@@ -32,6 +32,8 @@ import { GrnEditComponent } from './grn/grn-edit/grn-edit.component';
 import { ProductAddComponent } from './product/product-add/product-add.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
+import { BatchListComponent } from './batch/batch-list/batch-list.component';
+import { BatchAddComponent } from './batch/batch-add/batch-add.component';
 
 const routes: Routes = [
 
@@ -74,7 +76,9 @@ const routes: Routes = [
     GrnEditComponent,
     ProductAddComponent,
     ProductListComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    BatchListComponent,
+    BatchAddComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
