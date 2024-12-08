@@ -23,11 +23,11 @@ export class ProductListComponent {
   context = { componentParent: this };
   productList: any[] = [];
   columnDefs: ColDef[] = [
-    { field: 'id', headerName: 'ID' },
-    { field: 'name' },
-    { field: 'type' },
+    { field: 'id', headerName: 'ID', maxWidth: 80 },
+    { field: 'name', maxWidth: 100 },
+    { field: 'type', maxWidth: 150 },
     { field: 'description' },
-    { field: 'selling_price', headerName: 'Price',
+    { field: 'selling_price', headerName: 'Price',  maxWidth: 100,
       valueFormatter: params => params.data.selling_price.toFixed(2),
       cellStyle: function(params) {
         if (parseFloat(params.data.selling_price) < 1.00) {
@@ -37,7 +37,7 @@ export class ProductListComponent {
         }
       }
     },
-    { field: 'batch_size', headerName: 'Batch Size'},
+    { field: 'batch_size', headerName: 'Batch Size',  maxWidth: 120},
     { field: 'expire_duration', headerName: 'Expire Duration'},
     { field: 'recipe',
       valueFormatter: (params: any) =>( !params && !params.data && !params.data.recipe ) ? 'No Recipe': params.data?.recipe.name,

@@ -18,10 +18,19 @@ export class BatchListComponent {
 
   context = { componentParent: this };
   batchList: any[] = [];
+  gridOptions = {
+    autoSizeStrategy: {
+      type: 'fitCellContents'
+    },
+
+    // other grid options ...
+  }
   columnDefs: ColDef[] = [
-    { field: 'id', headerName: 'ID' },
-    { field: 'name' },
-    { field: 'Product', valueFormatter: function (params){
+    { field: 'id', headerName: 'ID',  maxWidth: 100 },
+    { field: 'name', minWidth: 300, },
+    { field: 'Product',
+      maxWidth: 100,
+      valueFormatter: function (params){
         return params?.data?.product?.name
       } },
     { field: 'Product Type', valueFormatter: function (params){
