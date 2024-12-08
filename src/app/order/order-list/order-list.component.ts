@@ -3,7 +3,6 @@ import { ColDef, GridOptions } from "ag-grid-community";
 import { BackEndService } from "../../services/back-end.service";
 import { ToastrService } from "ngx-toastr";
 import { AgGridAngular } from "ag-grid-angular";
-import { BatchAddComponent } from "../../batch/batch-add/batch-add.component";
 import { OrderAddComponent } from "../order-add/order-add.component";
 
 @Component({
@@ -22,7 +21,7 @@ export class OrderListComponent {
     { field: 'id' },
     { field: 'name' },
     { field: 'quantity' },
-    { field: 'batch_name', headerName: 'Batch' },
+    { field: 'batch_name', headerName: 'Batch' , minWidth: 300},
   ];
 
   public gridOptions: GridOptions = {

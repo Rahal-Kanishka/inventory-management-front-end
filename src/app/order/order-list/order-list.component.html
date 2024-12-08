@@ -6,14 +6,7 @@
 <!-- Modal -->
 <app-order-add #orderAddComponent (modalClosed)="onAddModalClosed($event)"></app-order-add>
 
-<div class="row pt-5">
-  <div class="grid-box">
-    <ag-grid-angular
-      style="width: 90%; height: 40vh;"
-      class="ag-theme-quartz"
-      [rowData]="rowData"
-      [gridOptions]="gridOptions"
-      [columnDefs]="columnDefs">
-    </ag-grid-angular>
-  </div>
-</div>
+<app-grid
+  [gridData]="rowData"
+  [columnDefs]="columnDefs"
+  [context]="context"></app-grid>
