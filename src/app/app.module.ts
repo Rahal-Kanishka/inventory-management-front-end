@@ -43,6 +43,7 @@ const routes: Routes = [
   { path: 'grn-list', component: GrnListComponent },
   { path: 'ingredient-list', component: IngredientListComponent },
   { path: 'recipe-list', component: RecipeListComponent },
+  { path: 'batch-list', component: BatchListComponent },
   { path: 'order-list', component: OrderListComponent },
   { path: 'location-list', component: LocationListComponent },
   { path: 'user-list', component: UserListComponent },
