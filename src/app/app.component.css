@@ -7,9 +7,16 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    margin-top: 5px;
   }
 
   div:hover {
     background: #cbcdd0;
   }
 }
+
+
+.active {
+  background: lightgray;
+}
+
