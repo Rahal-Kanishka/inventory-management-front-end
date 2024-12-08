@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import {AgGridAngular} from "ag-grid-angular";
 import {ColDef, GridOptions} from "ag-grid-community";
 import {ToastrService} from "ngx-toastr";
+import { take } from "rxjs";
+import { BackEndService } from "../services/back-end.service";
+
+const GET_DASHBOARD_DATA = '/dashboard/'
 
 @Component({
   selector: 'app-dashboard',
@@ -36,11 +40,22 @@ export class DashboardComponent {
     }
   }
 
-  constructor(private toastr: ToastrService) {
+  public dashboardData: any | null = null;
+
+  constructor(private toastr: ToastrService, private backEndService: BackEndService) {
     this.columnDefs.forEach((column) => {
       column.resizable = true;
     })
     this.toastr.success('Inventory management System', 'Welcome');
+    this.getDashboardData();
+  }
+
+  getDashboardData() {
+    this.backEndService.getRequest(GET_DASHBOARD_DATA)
+      .pipe(take(1))
+      .subscribe(
+        { next: (response) => this.dashboardData = response }
+      )
   }
 
 }
