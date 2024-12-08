@@ -9,7 +9,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { RouterLink, RouterModule, RouterOutlet, Routes } from "@angular/router";
 import { IngredientListComponent } from "./ingredient-list/ingredient-list.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
-import { OrderListComponent } from "./order-list/order-list.component";
+import { OrderListComponent } from "./order/order-list/order-list.component";
 import { HttpClientModule } from "@angular/common/http";
 import { GridComponent } from "./common/grid/grid.component";
 import { ReactiveFormsModule } from "@angular/forms";
@@ -34,6 +34,7 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
 import { BatchListComponent } from './batch/batch-list/batch-list.component';
 import { BatchAddComponent } from './batch/batch-add/batch-add.component';
+import { OrderAddComponent } from './order/order-add/order-add.component';
 
 const routes: Routes = [
 
@@ -79,7 +80,9 @@ const routes: Routes = [
     ProductListComponent,
     ProductEditComponent,
     BatchListComponent,
-    BatchAddComponent
+    BatchAddComponent,
+    OrderListComponent,
+    OrderAddComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

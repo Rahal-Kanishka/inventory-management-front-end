@@ -1,0 +1,89 @@
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="locationEditModel" #batchAddModel id="batchAddModel"
+     aria-hidden="true">
+  <div class="modal-dialog  modal-lg" role="document">
+    <form [formGroup]="OrderForm" (ngSubmit)="createNewOrder()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Place New Order</h5>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="nameInput">Order Name</label>
+            <input type="email" class="form-control" id="nameInput" placeholder="order name" formControlName="name">
+          </div>
+          <div class="form-group">
+            <label for="quantityInput">Quantity</label>
+            <input type="number" class="form-control" id="quantityInput" placeholder="quantity" formControlName="quantity">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <!--use as a div to prevent a submit action when click on close-->
+          <div class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</div>
+          <button type="submit" [disabled]="OrderForm.invalid" class="btn btn-primary">Save changes</button>
+        </div>
+        <!-- search user by name -->
+        <div class="modal-body suggested-box row mt-10" style="margin-top: 10px;">
+          <div class="row">
+            <div class="row">
+              <h4>Search Product to assign</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <input type="email" id="name-input" (keyup)="findProductsByName()" >
+            </div>
+          </div>
+          <div class="modal-body suggested-box pt-10 mt-10">
+            <ng-container *ngIf="suggestedProductList && suggestedProductList.length >= 0">
+              <label>Suggested Products</label>
+              <div *ngFor="let suggestedRecipe of suggestedProductList">
+                <div class="row" style="margin-top: 10px;">
+                  <div class="col">
+                    {{suggestedRecipe?.id}}
+                  </div>
+                  <div class="col">
+                    {{suggestedRecipe?.name}}
+                  </div>
+                  <div class="col">
+                    {{suggestedRecipe?.type}}
+                  </div>
+                  <div class="col">
+                    {{suggestedRecipe?.description}}
+                  </div>
+                  <div class="col">
+                    <button type="button" (click)="assignRecipe(suggestedRecipe?.id)" class="btn btn-primary">Assign</button>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <!-- Assigned users list--->
+        <div class="modal-body pt-10">
+          <ng-container *ngIf="!assignedProduct; else elsePart">
+            <div class="alert alert-primary mt-3" role="alert">
+              No Assigned Recipe
+            </div>
+          </ng-container>
+          <ng-template #elsePart>
+            <h4>Selected Product</h4>
+            <div class="row" style="margin-top: 10px;">
+              <div class="col">
+                {{assignedProduct?.id}}
+              </div>
+              <div class="col">
+                {{assignedProduct?.name}}
+              </div>
+              <div class="col">
+                {{assignedProduct?.type}}
+              </div>
+              <div class="col">
+                {{assignedProduct?.description}}
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
