@@ -38,7 +38,7 @@ export class ProductListComponent {
       }
     },
     { field: 'batch_size', headerName: 'Batch Size',  maxWidth: 120},
-    { field: 'expire_duration', headerName: 'Expire Duration'},
+    { field: 'expire_duration', headerName: 'Expire in Months'},
     { field: 'recipe',
       valueFormatter: (params: any) =>( !params && !params.data && !params.data.recipe ) ? 'No Recipe': params.data?.recipe.name,
     },
