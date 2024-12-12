@@ -24,8 +24,8 @@ export class ProductListComponent {
   productList: any[] = [];
   columnDefs: ColDef[] = [
     { field: 'id', headerName: 'ID', maxWidth: 80 },
-    { field: 'name', maxWidth: 100 },
-    { field: 'type', maxWidth: 150 },
+    { field: 'name', minWidth: 130 },
+    { field: 'type', maxWidth: 120 },
     { field: 'description' },
     { field: 'selling_price', headerName: 'Price',  maxWidth: 100,
       valueFormatter: params => params.data.selling_price.toFixed(2),
@@ -38,7 +38,7 @@ export class ProductListComponent {
       }
     },
     { field: 'batch_size', headerName: 'Batch Size',  maxWidth: 120},
-    { field: 'expire_duration', headerName: 'Expire in Months'},
+    { field: 'expire_duration', headerName: 'Expire in Months', maxWidth: 130},
     { field: 'recipe',
       valueFormatter: (params: any) =>( !params && !params.data && !params.data.recipe ) ? 'No Recipe': params.data?.recipe.name,
     },

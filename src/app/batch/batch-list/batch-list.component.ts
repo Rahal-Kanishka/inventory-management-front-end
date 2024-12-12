@@ -29,12 +29,13 @@ export class BatchListComponent {
     { field: 'id', headerName: 'ID', minWidth: 50},
     { field: 'name', minWidth: 300, },
     { field: 'Product',
-      maxWidth: 120,
+      minWidth: 140,
       valueFormatter: function (params){
         return params?.data?.product?.name
       } },
     { field: 'Product Type',
       headerName: 'Type',
+      maxWidth: 120,
       valueFormatter: function (params){
       return params?.data?.product?.type
       } },
